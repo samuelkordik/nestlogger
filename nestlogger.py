@@ -4,8 +4,10 @@ import json
 import urllib2
 import sched
 import sys
+import csv
 
 from config import *
+import nestfunctions
 
 napi = nest.Nest(client_id=client_id, client_secret=client_secret, access_token_cache_file=access_token_cache_file)
 
@@ -24,6 +26,8 @@ for structure in napi.structures:
         print 'Mode       : %s' % device.mode
         print 'Temp       : %0.1f' % device.temperature
         print 'Target     : %0.1f' % device.target
+        nestfunctions.logCSV(device, structure)
+
 structure = napi.structures[0]
 
 # Maybe later have current temp, maybe using pyowm
@@ -43,3 +47,5 @@ req = urllib2.Request('https://maker.ifttt.com/trigger/logtemperature/with/key/k
 req.add_header('Content-Type', 'application/json')
 
 response = urllib2.urlopen(req, json.dumps(data))
+
+
