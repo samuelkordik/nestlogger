@@ -1,0 +1,7 @@
+lib
+include
+bin
+.Python
+config.py
+config.pyc
+nest.json
