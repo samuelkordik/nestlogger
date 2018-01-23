@@ -5,3 +5,9 @@ bin
 config.py
 config.pyc
 nest.json
+
+client_secret.json
+
+nest_log.csv
+
+nestfunctions.pyc
